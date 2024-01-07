@@ -60,7 +60,7 @@ jobs:
       - name: Generate gfw.list and gfwlist.txt file
         run: |
           cat ./gfwlist2dnsmasq/gfwdomain.txt | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' > pre-gfw.txt
-          diff ./temporary/remove.txt ./pre-gfw.txt | awk '/^>/{print $2}' > gfwlist.txt
+          cat pre-gfw.txt | perl -ne '/^((?=^.{1,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})*)/ && print "$1\n"' | perl -ne 'print if not /\.cn$/' > gfwlist.txt
           cat ./temporary/proxy.txt | grep -Ev "^(regexp|keyword|full):" | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "$2\n"' >> gfwlist.txt
           cat ./temporary/proxy.txt | grep -Ev "^(regexp|keyword):" | perl -ne '/^(full:)([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "$2\n"' > pre-proxy.txt
           cat gfwlist.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > gfw.txt
