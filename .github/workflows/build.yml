@@ -57,7 +57,7 @@ jobs:
           chmod +x ./gfwlist2dnsmasq.sh
           ./gfwlist2dnsmasq.sh -l -o ./gfwdomain.txt
 
-      - name: Add gfw domains into pre-gfw.txt file and generate gfw.list file
+      - name: Generate gfw.list and gfwlist.txt file
         run: |
           cat ./gfwlist2dnsmasq/gfwdomain.txt | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' > pre-gfw.txt
           diff ./temporary/remove.txt ./pre-gfw.txt | awk '/^>/{print $2}' > gfwlist.txt
