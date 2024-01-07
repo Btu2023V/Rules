@@ -55,20 +55,21 @@ jobs:
         run: |
           cd gfwlist2dnsmasq || exit 1
           chmod +x ./gfwlist2dnsmasq.sh
-          ./gfwlist2dnsmasq.sh -l -o ./gfwlist.txt
+          ./gfwlist2dnsmasq.sh -l -o ./gfwdomain.txt
 
       - name: Add gfw domains into pre-gfw.txt file and generate gfw.list file
         run: |
-          cat ./gfwlist2dnsmasq/gfwlist.txt | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' > pre-gfw.txt
-          cat ./temporary/proxy.txt | grep -Ev "^(regexp|keyword|full):" | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "$2\n"' >> pre-gfw.txt
+          cat ./gfwlist2dnsmasq/gfwdomain.txt | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' > pre-gfw.txt
+          diff ./temporary/remove.txt ./pre-gfw.txt | awk '/^>/{print $2}' > gfwlist.txt
+          cat ./temporary/proxy.txt | grep -Ev "^(regexp|keyword|full):" | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "$2\n"' >> gfwlist.txt
           cat ./temporary/proxy.txt | grep -Ev "^(regexp|keyword):" | perl -ne '/^(full:)([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "$2\n"' > pre-proxy.txt
-          cat pre-gfw.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > gfw.txt
+          cat gfwlist.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > gfw.txt
           cat pre-proxy.txt >> gfw.txt
           cat gfw.txt | sort --ignore-case -u > gfw.list
 
       - name: Create and write `gfw` lists to data directory
         run: |
-          cat pre-gfw.txt | sort --ignore-case -u > ./domain/data/gfw
+          cat gfwlist.txt | sort --ignore-case -u > ./domain/data/gfw
       
       - name: Add `full`, `regexp` and `keyword` type of rules back into "gfw" list
         run: |
@@ -97,6 +98,6 @@ jobs:
 
       - name: Release and upload assets
         run: |
-          gh release create ${{ env.TAG_NAME }} --generate-notes --latest --title ${{ env.RELEASE_NAME }} ./geosite.dat ./gfw.list
+          gh release create ${{ env.TAG_NAME }} --generate-notes --latest --title ${{ env.RELEASE_NAME }} ./geosite.dat
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
