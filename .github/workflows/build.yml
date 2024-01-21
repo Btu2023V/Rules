@@ -42,6 +42,10 @@ jobs:
           go-version-file: ./domain/go.mod
           cache-dependency-path: ./domain/go.sum
     
+      - name: Get geoip.dat relative files
+        run: |
+          wget https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
+     
       - name: Rename tg.txt to telegramcidr.list
         run: |
           cd temporary || exit 1
@@ -91,13 +95,13 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b release
-          git add geosite.dat *.list *.txt
+          git add *.list *.txt
           git commit -m "${{ env.RELEASE_NAME }}"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin release
 
       - name: Release and upload assets
         run: |
-          gh release create ${{ env.TAG_NAME }} --generate-notes --latest --title ${{ env.RELEASE_NAME }} ./geosite.dat
+          gh release create ${{ env.TAG_NAME }} --generate-notes --latest --title ${{ env.RELEASE_NAME }} ./*.dat
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
