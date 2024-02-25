@@ -398,7 +398,7 @@ livechatinc.com
 edgekey.net
 clarity.ms
 appcenter.ms
-full:r3.o.lencr.org
+lencr.org
 b168.net
 akadns88.net
 edgekey88.net
@@ -406,3 +406,4 @@ edgesuite.net
 amazon-adsystem.com
 qualtrics.com
 x.com
+awswaf.com
