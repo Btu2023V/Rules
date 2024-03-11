@@ -410,3 +410,7 @@ awswaf.com
 cookiepro.com
 cookielaw.org
 onetrust.com
+imageglass.org
+reddit.app.link
+redditmail.com
+cfl.re
