@@ -420,3 +420,5 @@ azureedge.us
 spaceship.com
 icann.org
 spaceship-cdn.com
+bootstrapcdn.com
+getbootstrap.com
