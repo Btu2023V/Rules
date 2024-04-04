@@ -425,4 +425,9 @@ getbootstrap.com
 staticaly.com
 full:cdn.statically.io
 tw
-
+podnapisi.net
+ysubs.com
+napisy24.pl
+titlovi.com
+opensubtitles.org
+thesubdb.com
