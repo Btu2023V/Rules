@@ -428,3 +428,5 @@ napisy24.pl
 titlovi.com
 opensubtitles.org
 thesubdb.com
+full:aws.demdex.net
+full:ooo.0x0.ooo
