@@ -431,7 +431,7 @@ thesubdb.com
 full:aws.demdex.net
 full:ooo.0x0.ooo
 announcekit.app
-full:i.mji.rip
+full:i.mij.rip
 appspot.com
 cloudproxy.app
 doubleclick.net
