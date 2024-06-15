@@ -17,7 +17,11 @@ jobs:
           echo "RELEASE_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
         shell: bash
-     
+    
+      - name: Make directory
+        run: |
+          mkdir -p ruleset
+
       - name: Checkout the "booster" branch
         uses: actions/checkout@v4
         with:
