@@ -73,7 +73,7 @@ jobs:
           cat ./temporary/proxy.txt | grep -Ev "^(regexp|keyword):" | perl -ne '/^(full:)([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "$2\n"' > pre-proxy.txt
           cat gfwlist.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > gfw.txt
           cat gfwlist.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "DOMAIN-SUFFIX,$2\n"' > ruleset/gfw.txt
-          cat pr-proxy.txt | perl -ne '/^(full:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "DOMAIN,$2\n"' >> ruleset/gfw.txt
+          cat pre-proxy.txt | perl -ne '/^(full:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print "DOMAIN,$2\n"' >> ruleset/gfw.txt
           cat ./temporary/tg.txt >> ruleset/gfw.txt
           cat pre-proxy.txt >> gfw.txt
           cat gfw.txt | sort --ignore-case -u > gfw.list
@@ -102,7 +102,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b release
-          git add *.list *.txt
+          git add *.list *.txt ruleset/*.txt
           git commit -m "${{ env.RELEASE_NAME }}"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin release
