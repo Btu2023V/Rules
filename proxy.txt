@@ -457,3 +457,4 @@ cloudns.net
 full:mb.qingqiu.buzz
 full:s21.ax1x.com
 sagernet.org
+natvps.net
