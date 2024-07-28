@@ -459,3 +459,5 @@ full:s21.ax1x.com
 sagernet.org
 natvps.net
 techforpalestine.org
+full:danmu.yhdmjx.com
+osir.eu.org
