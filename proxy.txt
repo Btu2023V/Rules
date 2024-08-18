@@ -458,3 +458,9 @@ sagernet.org
 natvps.net
 techforpalestine.org
 full:danmu.yhdmjx.com
+fitbit.com
+amazonaws.biz
+amazonaws.info
+amazonaws.net
+amazonaws.org
+regexp:.+\.amzndns\.(co\.uk|com|net|org)$
