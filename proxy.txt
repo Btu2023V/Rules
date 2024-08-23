@@ -464,3 +464,4 @@ amazonaws.info
 amazonaws.net
 amazonaws.org
 regexp:.+\.amzndns\.(co\.uk|com|net|org)$
+kuxueyun.com
