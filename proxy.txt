@@ -465,3 +465,4 @@ amazonaws.net
 amazonaws.org
 regexp:.+\.amzndns\.(co\.uk|com|net|org)$
 kuxueyun.com
+full:giffgaffsim.notion.site
