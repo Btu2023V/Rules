@@ -54,8 +54,8 @@ jobs:
         run: |
           cd temporary || exit 1
           cat tg.txt > ../telegramcidr.list
-          cat youtube.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > ../youtube.list
-          cat youtube.list | sort --ignore-case -u >> youtube.list
+          cat youtube.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > ../ytb.txt
+          cat ytb.txt | sort --ignore-case -u > youtube.list
     
       - name: Reserve `full`, `regexp` and `keyword` type of rules from plus lists to "reserve" files
         run: |
