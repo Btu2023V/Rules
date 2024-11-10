@@ -54,6 +54,7 @@ jobs:
         run: |
           cd temporary || exit 1
           cat tg.txt > ../telegramcidr.list
+          cat youtube.txt > ../youtube.list
     
       - name: Reserve `full`, `regexp` and `keyword` type of rules from plus lists to "reserve" files
         run: |
