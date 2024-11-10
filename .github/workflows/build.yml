@@ -55,8 +55,7 @@ jobs:
           cd temporary || exit 1
           cat tg.txt > ../telegramcidr.list
           cat youtube.txt | perl -ne '/^(domain:)?([-_a-zA-Z0-9]+(\.[-_a-zA-Z0-9]+)*)/ && print ".$2\n"' > ../ytb.txt
-          cat ../ytb.txt | sort --ignore-case -u > youtube.list
-    
+          
       - name: Reserve `full`, `regexp` and `keyword` type of rules from plus lists to "reserve" files
         run: |
           cat ./temporary/proxy.txt | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > proxy-reserve.txt    
@@ -80,6 +79,8 @@ jobs:
           cat ./ruleset/gfw.txt | sort --ignore-case -u > ruleset/gfw.list
           cat pre-proxy.txt >> gfw.txt
           cat gfw.txt | sort --ignore-case -u > gfw.list
+          cat ytb.txt | sort --ignore-case -u > youtube.list
+
 
       - name: Create and write `gfw` lists to data directory
         run: |
