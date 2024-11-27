@@ -477,3 +477,6 @@ rarbgproxy.to
 i.111666.best
 ariang.js.org
 ariang.mayswind.net
+fastly-edge.com
+fastly.io
+githubcopilot.com
