@@ -480,3 +480,4 @@ ariang.mayswind.net
 fastly-edge.com
 fastly.io
 githubcopilot.com
+full:dl.osir.eu.org
