@@ -1,0 +1,16 @@
+full:aws.demdex.net
+full:cdn-spotify-experiments.conductrics.com
+full:cdn.statically.io
+full:danmu.yhdmjx.com
+full:dl.osir.eu.org
+full:giffgaffsim.notion.site
+full:github-cloud.s3.amazonaws.com
+full:i.mij.rip
+full:mb.qingqiu.buzz
+full:ooo.0x0.ooo
+full:s21.ax1x.com
+full:server.mch3.com
+full:spotify.com.edgesuite.net
+regexp:.+\.amzndns\.(co\.uk|com|net|org)$
+regexp:.+\.awsdns-[0-9][0-9]\.(co\.uk|com|net|org)$
+regexp:github-production-release-asset-[0-9a-zA-Z]{6}\.s3\.amazonaws\.com
