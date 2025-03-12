@@ -481,3 +481,4 @@ fastly-edge.com
 fastly.io
 githubcopilot.com
 mhyidc.com
+vpsxb.net
