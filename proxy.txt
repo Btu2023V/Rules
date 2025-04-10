@@ -278,6 +278,7 @@ singlelogin.me
 soasta-dswb.com
 spoti.fi
 spotify.design
+spotify.com
 spotifycdn.com
 spotifycdn.net
 spotifycharts.com
