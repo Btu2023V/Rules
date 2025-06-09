@@ -566,7 +566,7 @@ regexp:.+\.awsdns-[0-9][0-9]\.(co\.uk|com|net|org)$
 regexp:.+\.amzndns\.(co\.uk|com|net|org)$
 mvgroup.org
 docuwiki.net
-
+tospotify.com
 
 
 
