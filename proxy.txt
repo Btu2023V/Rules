@@ -567,6 +567,8 @@ regexp:.+\.amzndns\.(co\.uk|com|net|org)$
 mvgroup.org
 docuwiki.net
 tospotify.com
+oplist.org
+openlist.team
 
 
 
